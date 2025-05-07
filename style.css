@@ -1,0 +1,486 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Global Styles === */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F9F9F9; /* Neutral background for contrast */
+  color: #333; /* Default text color */
+  line-height: 1.6;
+}
+
+h2 {
+  text-align: center;
+  margin: 60px 0 40px;
+  color: #1A3F22; /* Dark green for headings */
+}
+
+/* === Navbar Styles === */
+header {
+  background-color: #1A3F22; /* Dark green */
+  color: white;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.logo {
+  font-size: 10rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgb(231, 169, 53); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(6, 106, 6);
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  color: #D99201; /* Bright orange on hover */
+  color: #f4a261;
+}
+
+/* === Slider === */
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  height: 450px;
+  margin-bottom: 60px;
+  max-width: 1200px;
+  margin: 20px auto;
+  overflow: hidden;
+  height: 450px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 450px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  background-color: rgba(26, 63, 34, 0.8); /* Semi-transparent dark green */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Style for navigation buttons */
+.slider-container {
+  position: relative;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%; /* Rounded buttons */
+  font-size: 18px;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.6); /* Darker on hover */
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev:focus, .next:focus {
+  outline: none; /* Remove focus outline */
+}
+
+/* === Buttons === */
+button {
+  background-color: #D99201; /* Bright orange */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #905A01; /* Dark orange on hover */
+}
+
+/* === Sections === */
+.section,
+.alt-section {
+  padding: 120px 20px;
+}
+
+.section {
+  background-color: #F9F9F9; /* Neutral background */
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.alt-section {
+  background-color: #58761B; /* Lighter green */
+  color: white;
+}
+
+.alt-section h2 {
+  color: white;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* === Product Grid === */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  padding: 30px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.product h3 {
+  margin: 20px 0 10px;
+  color: #1A3F22; /* Dark green for product titles */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.product p {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Style for the product grid in the "More Products" section */
+#more .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 40px; /* Space between items */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#more .product {
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#more .product img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#more .product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the product grid in the "Featured Products" section */
+#featured .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 40px; /* Space between items */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#featured .product {
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#featured .product img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+#featured .product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* === Footer === */
+footer {
+  background-color: #1A3F22; /* Dark green */
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+footer p {
+  margin: 0;
+  color: #D99201; /* Bright orange for footer text */
+}
+
+/* === Sidebar Styles === */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Hidden off-screen */
+  width: 250px;
+  height: 100%;
+  background-color: #1A3F22; /* Dark green */
+  color: white;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease; /* Smooth slide-in/out effect */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  transform: translateX(-100%);
+  left: -250px;
+  background-color: #444;
+  transform: translateX(250px);
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Slide in when open */
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #D99201; /* Bright orange */
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s;
+  color: #fff;
+}
+
+.sidebar ul li a:hover {
+  color: #D99201; /* Bright orange on hover */
+  color: #f4a261;
+}
+
+/* Close Button Styles */
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+  transition: color 0.3s ease;
+}
+
+.close-icon:hover {
+  color: #D99201; /* Bright orange on hover */
+}
+
+/* Options Icon Styles */
+.options-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #D99201; /* Bright orange */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  z-index: 1100; /* Ensure it stays above other elements */
+  transition: background-color 0.3s ease, left 0.3s ease; /* Smooth transition */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.options-icon:hover {
+  background-color: #905A01; /* Dark orange on hover */
+  color: #f4a261;
+}
+
+/* Adjust position when the sidebar is open */
+.sidebar.open ~ .options-icon {
+  left: 270px; /* Move to the right when the sidebar is open */
+}
+
+/* === Responsive Media Queries === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+
+  .slider-container {
+    height: 300px;
+  }
+
+  .options-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
