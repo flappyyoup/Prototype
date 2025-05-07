@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background-color: #fdfdfd;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+section {
+    height: 100vh; /* Each section takes up the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem; /* Consistent padding for all sections */
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #1d4d2d;
+    color: #f5cc59;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #0e2f1c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-container input {
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    color: #5f4c4c;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+}
+
+.search-container input:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Highlight on focus */
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 1.1rem;
+    color: #aaa;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f5cc59; /* Highlight on hover */
+}
+
+.cart-icon {
+    font-size: 1.3rem;
+}
+
+.logout {
+    background-color: #d4a437;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #b88a2d; /* Darker gold on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.hero {
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    border-radius: 10px; /* Rounded edges for a modern look */
+    padding: 3rem; /* Consistent padding */
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.logo .pawn-icon {
+    font-size: 2.5rem;
+    color: #f5cc59;
+}
+
+.logo h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f5cc59;
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #1d4d2d;
+    margin-bottom: 1rem;
+}
+
+.cta {
+    margin-top: 1rem;
+    background-color: #f5cc59;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta:hover {
+    background-color: #d4a437; /* Darker gold on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.hero .cta {
+    margin-top: 1rem;
+    background-color: #f5cc59;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero .cta:hover {
+    background-color: #d4a437; /* Darker gold on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.items-section {
+    background-color: #d6af58;
+    border-radius: 10px; /* Rounded edges for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    padding: 3rem; /* Consistent padding */
+    text-align: center;
+}
+
+.items-section h2 {
+    font-size: 2rem; /* Slightly larger font size */
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add subtle text shadow */
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.item {
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.item img {
+    width: 120px; /* Slightly larger images */
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.item img:hover {
+    transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+.item p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.contact-section {
+    background-color: #1d4d2d;
+    color: white;
+    padding: 3rem; /* Consistent padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Rounded edges */
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}

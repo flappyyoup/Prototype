@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fedc56; /* Dark green for the background */
+  } 
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #004225; /* Updated green color */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.login-container:hover {
+  transform: scale(1.05); /* Slightly enlarge the container */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+}
+
+.login-image {
+  width: 400px; /* Reduce the width to make the image smaller */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: cover; /* Ensure the image fits nicely */
+  display: block;
+  margin: auto; /* Center the image within its container */
+}
+
+.login-box {
+  width: 500px;
+  padding: 30px 25px;
+  background-color: #ffc300;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+.login-box:hover {
+    transform: scale(1.05); /* Slightly enlarge the box */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+  }
+
+.login-box h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.login-box a {
+  display: block;
+  font-size: 0.9em;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: right;
+  text-decoration: none;
+}
+
+.login-box button {
+  width: 99%;
+  padding: 10px;
+  background-color: #004225; /* Updated green color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.login-box .register {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+.login-box .register span,
+.login-box .register a {
+  display: inline;
+  vertical-align: middle;
+}
+
+.login-box .register a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}

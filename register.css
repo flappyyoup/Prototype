@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fedc56;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+  
+.container {
+    background-color: #ffc300;
+    padding: 40px;
+    border-radius: 20px; /* Increased border-radius for smoother edges */
+    width: 1000px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.container:hover {
+    transform: scale(1.02); /* Slightly enlarge the container */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+}
+  
+h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #000;
+}
+  
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+  
+.form-group div {
+    flex: 0 0 48%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+  
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2e2e2e;
+}
+  
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 12px; /* Increased border-radius for smoother input edges */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+input:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+  
+.submit-btn {
+    background-color: #024d30;
+    color: #fff;
+    border: none;
+    padding: 12px 200px;
+    border-radius: 12px; /* Increased border-radius for smoother button edges */
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.submit-btn:hover {
+    background-color: #016f3e; /* Slightly darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+  
+.login-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #000;
+}
+  
+.login-text a {
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.login-text a:hover {
+    color: #024d30; /* Change link color on hover */
+}
