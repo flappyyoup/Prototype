@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace</title>
+  <link rel="stylesheet" href="market.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <input type="text" placeholder="Search" class="search-bar">
+      <nav>
+        <a href="#">Home</a>
+        <a class="active" href="#">Marketplace</a>
+        <a href="#">Branch</a>
+        <a href="#">About</a>
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <button class="logout-btn">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <aside class="filter-panel">
+      <h3>FILTER</h3>
+      <p>Category:</p>
+      <label><input type="radio" name="category" checked> ALL</label>
+      <label><input type="radio" name="category"> Necklace</label>
+      <label><input type="radio" name="category"> Ring</label>
+      <label><input type="radio" name="category"> Earrings</label>
+      <label><input type="radio" name="category"> Bracelet</label>
+      <label><input type="radio" name="category"> Wristwatch</label>
+      <br/>
+      <label><input type="radio" name="karat"> 18k Gold</label>
+      <label><input type="radio" name="karat"> 22k Gold</label>
+      <label><input type="radio" name="karat"> 24k Gold</label>
+    </aside>
+
+    <section class="marketplace">
+      <div class="marketplace-header">
+        <input type="text" placeholder="Search" class="search-bar">
+        <label for="sort">SORT BY:</label>
+        <select id="sort">
+          <option>Price Low to High</option>
+          <option>Price High to Low</option>
+        </select>
+      </div>
+
+      <div class="products">
+        <!-- Product Card 1 -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Pendant">
+          <p><strong>18k Gold Kaori Pendant Necklace 2.45g</strong></p>
+          <p>₱2,650</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- Repeat product cards as needed -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Pendant">
+          <p><strong>18k Gold Kiomi Pendant Necklace 2.96g</strong></p>
+          <p>₱1,965</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Pendant">
+          <p><strong>18k Gold Hayame Pendant Necklace 2.35g</strong></p>
+          <p>₱2,150</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Ring">
+          <p><strong>22k Gold Hikari Ring with Diamonds 1.05g</strong></p>
+          <p>₱12,050</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Ring">
+          <p><strong>24k Gold Tsuruko Ring with Diamond 1.78g</strong></p>
+          <p>₱15,190</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://via.placeholder.com/100" alt="Earrings">
+          <p><strong>18k Gold Juli Earrings 2.15g</strong></p>
+          <p>₱1,850</p>
+          <div class="card-actions">
+            <i class="far fa-heart"></i>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <i class="fas fa-arrow-left"></i>
+        <span>1/2</span>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

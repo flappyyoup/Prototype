@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #D5AD50;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  background-color: #0F3C2C;
+  padding: 10px 20px;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  width: 200px;
+  margin-right: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a.active {
+  border-bottom: 2px solid white;
+}
+
+.cart-icon {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background-color: #D5AD50;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+}
+
+.filter-panel {
+  width: 250px;
+  background: #e0e0e0;
+  padding: 20px;
+  margin-left: 20px; /* Adds space between the filter-panel and the left edge */
+  margin-top: 20px; /* Adds space between the filter-panel and the top edge */
+}
+
+.filter-panel label {
+  display: block;
+  margin: 5px 0;
+}
+
+.marketplace {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.marketplace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marketplace-header .search-bar {
+  width: 300px;
+}
+
+.marketplace-header select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  background-color: #D5AD50;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-actions i {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: bold;
+  gap: 10px;
+}

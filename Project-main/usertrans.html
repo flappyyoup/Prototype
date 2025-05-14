@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User - Submit Transaction</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0F3C2C;
+    }
+
+    .form-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-container > div {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .personal-info {
+      background-color: #e3f2fd;
+    }
+
+    .item-info {
+      background-color: #fce4ec;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    img#item-preview {
+      display: none;
+      max-width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="form-section">
+    <form class="form-container">
+      <div class="personal-info">
+        <h3>Personal Information</h3>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input id="name" type="text" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input id="contact" type="text" placeholder="Enter your contact number (09XXXXXXXXX)" required />
+        </div>
+      </div>
+
+      <div class="item-info">
+        <h3>Item Information</h3>
+        <div class="form-group">
+          <label for="item-type">Item Type</label>
+          <select id="item-type" required>
+            <option value="">Select Type</option>
+            <option>Necklace</option>
+            <option>Bracelet</option>
+            <option>Earrings</option>
+            <option>Wrist Watch</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="item-description">Item Description</label>
+          <input id="item-description" type="text" placeholder="E.g. Gold, Silver, Diamond" required />
+        </div>
+        <div class="form-group">
+          <label for="item-photo">Upload Item Photo</label>
+          <input id="item-photo" type="file" accept="image/*" required />
+          <img id="item-preview" src="#" alt="Item Preview" />
+        </div>
+        <div class="form-group">
+          <label for="valid-id">Upload Valid ID</label>
+          <input id="valid-id" type="file" accept="image/*" required />
+        </div>
+        <div class="form-group">
+          <label for="transaction-date">Transaction Date</label>
+          <input id="transaction-date" type="date" readonly />
+        </div>
+        <button type="submit" class="submit-btn">Submit Request</button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('item-photo').addEventListener('change', function(event) {
+      const preview = document.getElementById('item-preview');
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>
