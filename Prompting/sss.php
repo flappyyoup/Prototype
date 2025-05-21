@@ -2,6 +2,9 @@
 // Include the database connection
 include 'db.php';
 
+// Start session
+session_start();
+
 // Handle form submission for login
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -16,6 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
 
         // Verify the password
         if (password_verify($password, $user['password'])) {
+            // Set session variables
+            $_SESSION['email'] = $email;
+            // Store profile picture in session if exists
+            if (!empty($user['profile_picture'])) {
+                $_SESSION['profile_picture'] = $user['profile_picture'];
+            }
             echo "<script>alert('Login successful!'); window.location.href='home.php';</script>";
         } else {
             echo "<script>alert('Invalid email or password!');</script>";

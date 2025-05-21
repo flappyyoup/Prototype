@@ -1,6 +1,14 @@
 <?php
 // Include the database connection
 include 'db.php';
+
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Get user profile picture
+$profile_picture = isset($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : 'profile.jpg';
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +27,7 @@ include 'db.php';
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1d4b0b;
+            background-color: #f7d16c;
             color: white;
         }
 
@@ -128,6 +136,8 @@ include 'db.php';
 
         /* Branch Section */
         .branch-section {
+            font-family: Arial, sans-serif;
+            font-weight: normal;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -138,36 +148,64 @@ include 'db.php';
         .branch-section h1 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            color: #ffc300;
-            font-weight: 800;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            color: #1e4b0c;
+            font-weight: 700;
+    
         }
 
         .branch-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            width: 100%;
-        }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
 
-        .branch {
-            position: relative;
-            background-color: rgba(245, 182, 15, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 300px;
-            height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
+
+
+.branch {
+    flex: 0 0 auto; /* ensures each branch stays fixed width */
+    width: 300px;
+    height: 200px;
+    position: relative;
+    background-color: rgba(245, 182, 15, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.branch .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 8px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.branch:hover .hover-text {
+    opacity: 0;
+    opacity: 1;
+}
 
         .branch:hover {
             transform: scale(1.06);
@@ -175,36 +213,87 @@ include 'db.php';
         }
 
         .branch img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.5;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: none; /* Start clear */
+}
 
-        .branch:hover img {
-            opacity: 0.8;
-            transform: scale(1.1);
-        }
+.branch:hover img {
+    filter: blur(3px); /* Becomes blurry on hover */
+    transform: scale(1.05);
+}
 
-        .branch-label {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            color: white;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
+
+.branch-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8px 16px;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* slight glow for visibility */
+    backdrop-filter: blur(4px); /* background blur effect */
+    -webkit-backdrop-filter: blur(4px); /* Safari support */
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+
 
         .branch:hover .branch-label {
+            opacity: 0;
             background: rgba(0, 0, 0, 0.7);
             transform: translateX(-50%) translateY(-5px);
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100vh;
+            background: #0F3C2C;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+            padding: 20px;
+            transform: translateX(100%);
+            visibility: hidden;
+            opacity: 0;
+            overflow-y: auto;
+            color: white;
+            border-radius: 15px 0 0 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 
@@ -213,6 +302,12 @@ include 'db.php';
         function toggleProfileMenu() {
             const profileMenu = document.querySelector('.profile-menu');
             profileMenu.classList.toggle('active');
+        }
+
+        // Notification toggle
+        function toggleNotifications() {
+            // You can implement notification functionality here
+            alert('Notifications feature coming soon!');
         }
 
         // Close profile menu if clicked outside
@@ -228,54 +323,185 @@ include 'db.php';
 
     <!-- Navbar -->
     <div class="navbar">
-        <!-- Search Bar -->
-        <form class="search-bar" method="GET" action="">
-            <input type="text" name="search" placeholder="Search branches..." value="">
-            <button type="submit">🔍</button>
-        </form>
+    <!-- Left Logo/Brand (Optional) -->
+    <div style="color: #f5cc59; font-weight: bold; font-size: 1.2rem;">iPawnshop</div>
 
-        <!-- Navigation Icons -->
-        <div class="nav-icons">
-            <a href="home.php" data-tooltip="Home">🏠</a>
-            <a href="marketplace.php" data-tooltip="Marketplace">🛒</a>
-            <a href="branch.php" data-tooltip="Branches">📍</a>
-            <a href="about.php" data-tooltip="About">ℹ️</a>
-        </div>
+    <!-- Right Navigation -->
+    <div style="display: flex; align-items: center; gap: 30px;">
+        <!-- Text Navigation -->
+        <a href="home.php" style="color: white; text-decoration: none; font-size: 16px;">Home</a>
+        <a href="market.php" style="color: white; text-decoration: none; font-size: 16px;">Marketplace</a>
+        <a href="branch.php" style="color: white; text-decoration: none; font-size: 16px;">Branches</a>
+        <a href="about.php" style="color: white; text-decoration: none; font-size: 16px;">About Us</a>
+
+        <!-- Notification Bell -->
+        <a href="javascript:void(0)" onclick="toggleNotifications()" style="color: white; font-size: 20px;" title="Notifications">🔔</a>
+
+        <!-- Cart Icon -->
+        <a href="javascript:void(0)" onclick="toggleCart()" style="color: white; font-size: 20px;" title="Cart">🛒</a>
+
+        <!-- SANGLA NOW Button -->
+        <button onclick="window.location.href='marketplace.php'" style="background-color: #f5cc59; color: #0e2f1c; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            SANGLA NOW
+        </button>
 
         <!-- Profile Menu -->
         <div class="profile-menu">
             <div class="profile-icon" onclick="toggleProfileMenu()">
-                <img src="profile.jpg" alt="Profile">
+                <img src="<?php echo htmlspecialchars($profile_picture); ?>" alt="Profile">
             </div>
             <div class="dropdown">
                 <a href="profile.php">Profile</a>
-                <a href="transactions.php">Transactions</a>
-                <a href="loan.php">Loan</a>
-                <a href="payments.php">Payments</a>
-                <a href="sss.php">Log Out</a>
+                <a href="sangla.php">Sangla</a>
+                <a href="tubo.php">Tubo</a>
+                <a href="tubos.php">Tubos</a>
+                <a href="sss.php">Logout</a>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Branch Section -->
-    <section class="branch-section">
-        <h1 data-aos="fade-down"><span style="color: #ffc300;">🌿</span> Our Branches</h1>
+<section class="branch-section">
+    <h1 data-aos="fade-down">Our Branches</h1>
 
-        <div class="branch-container">
-            <div class="branch" data-aos="zoom-in" onclick="location.href='ligao.php'">
-                <img src="images/ligao.jpg" alt="Polangui Branch">
-                <div class="branch-label">Polangui</div>
-            </div>
-            <div class="branch" data-aos="zoom-in" data-aos-delay="100" onclick="location.href='tabaco.php'">
-                <img src="images/tabaco.jpg" alt="Libon Branch">
-                <div class="branch-label">Libon</div>
-            </div>
-            <div class="branch" data-aos="zoom-in" data-aos-delay="200" onclick="location.href='legazpi.php'">
-                <img src="images/legazpi.jpg" alt="Ligao City Branch">
-                <div class="branch-label">Ligao City</div>
-            </div>
+    <div class="branch-container">
+        <!-- Polangui -->
+        <div class="branch" data-aos="zoom-in" onclick="location.href='ligao.php'">
+            <img src="images/polangui.jpg" alt="Polangui Branch">
+            <div class="branch-label">Polangui</div>
+            <div class="hover-text">Pluto Street, Centro Occidental, Polangui, Albay</div>
         </div>
-    </section>
+
+        <!-- Libon -->
+        <div class="branch" data-aos="zoom-in" data-aos-delay="100" onclick="location.href='tabaco.php'">
+            <img src="images/libon.jpg" alt="Libon Branch">
+            <div class="branch-label">Libon</div>
+            <div class="hover-text">Zone 7 Del Rosario, Libon, Albay</div>
+        </div>
+
+        <!-- Ligao City -->
+        <div class="branch" data-aos="zoom-in" data-aos-delay="200" onclick="location.href='legazpi.php'">
+            <img src="images/ligao.jpg" alt="Ligao City Branch">
+            <div class="branch-label">Ligao City</div>
+            <div class="hover-text">Zone 1 Tuburan, Ligao City, Albay</div>
+        </div>
+    </div>
+</section>
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cartDrawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin: 0;">Shopping Cart</h2>
+        <button onclick="toggleCart()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+    </div>
+    <div id="cartItems" style="overflow-y: auto; max-height: calc(100vh - 200px);">
+        <!-- Cart items will be added here dynamically -->
+    </div>
+    <div style="position: absolute; bottom: 30px; left: 0; right: 0; padding: 20px; background: white; border-top: 1px solid #eee;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <span>Total:</span>
+            <span id="cartTotal">₱0.00</span>
+        </div>
+        <button onclick="checkout()" style="width: 100%; padding: 10px; background: #D5AD50; color: white; border: none; border-radius: 5px; cursor: pointer;">Checkout</button>
+    </div>
+</div>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<script>
+    // Cart functionality
+    let cart = [];
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+
+    function toggleCart() {
+        const isOpen = cartDrawer.classList.contains('open');
+        if (isOpen) {
+            cartDrawer.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            document.body.classList.remove('panel-open');
+        } else {
+            cartDrawer.classList.add('open');
+            cartOverlay.classList.add('active');
+            document.body.classList.add('panel-open');
+        }
+    }
+
+    function addToCart(product) {
+        const existingItem = cart.find(item => item.id === product.id);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({...product, quantity: 1});
+        }
+        updateCart();
+        toggleCart();
+    }
+
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        updateCart();
+    }
+
+    function updateCart() {
+        cartItems.innerHTML = '';
+        let total = 0;
+        
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const itemElement = document.createElement('div');
+            itemElement.style.display = 'flex';
+            itemElement.style.justifyContent = 'space-between';
+            itemElement.style.alignItems = 'center';
+            itemElement.style.padding = '10px';
+            itemElement.style.borderBottom = '1px solid #eee';
+            
+            itemElement.innerHTML = `
+                <div>
+                    <h3 style="margin: 0;">${item.name}</h3>
+                    <p style="margin: 5px 0;">₱${item.price.toFixed(2)} x ${item.quantity}</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span>₱${itemTotal.toFixed(2)}</span>
+                    <button onclick="removeFromCart('${item.id}')" style="background: none; border: none; color: red; cursor: pointer;">×</button>
+                </div>
+            `;
+            
+            cartItems.appendChild(itemElement);
+        });
+        
+        cartTotal.textContent = `₱${total.toFixed(2)}`;
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+        alert('Proceeding to checkout...');
+    }
+
+    // Close cart when clicking overlay
+    cartOverlay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleCart();
+    });
+
+    // Close cart when pressing escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && cartDrawer.classList.contains('open')) {
+            toggleCart();
+        }
+    });
+
+    // Initialize cart
+    updateCart();
+</script>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
